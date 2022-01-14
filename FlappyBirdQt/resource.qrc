@@ -1,15 +1,10 @@
 <RCC>
     <qresource prefix="/">
-        <file>images/base.png</file>
-        <file>images/pipaUp.png</file>
-        <file>images/pipedown.png</file>
         <file>images/pipa2Down.png</file>
         <file>images/pipa2Up.png</file>
-        <file>images/flapground.png</file>
-        <file>images/blk.png</file>
-        <file>images/blk2.png</file>
         <file>images/glowingEdges2.png</file>
-        <file>images/crna pipa down.png</file>
-        <file>images/crna pipa up.png</file>
+        <file>images/yellowbird-downflap.png</file>
+        <file>images/yellowbird-midflap.png</file>
+        <file>images/yellowbird-upflap.png</file>
     </qresource>
 </RCC>

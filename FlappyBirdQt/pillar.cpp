@@ -4,12 +4,12 @@
 #include <QGraphicsScene>
 
 Pillar::Pillar() :
-    topPillar(new QGraphicsPixmapItem(QPixmap(":/images/crna pipa up.png"))),
-    bottomPillar(new QGraphicsPixmapItem(QPixmap(":/images/crna pipa down.png")))
+    topPillar(new QGraphicsPixmapItem(QPixmap(":/images/pipa2Up.png"))),
+    bottomPillar(new QGraphicsPixmapItem(QPixmap(":/images/pipa2Down.png")))
 {
     // manipulating the pillar height and width display, 60 is a magix number (space between the pillars)
     topPillar->setPos(QPointF(0, 0) - QPointF(topPillar->boundingRect().width() /2, // x-axis
-                                             topPillar->boundingRect().height() + 60)); //y-axis
+                                             topPillar->boundingRect().height() + 30)); //y-axis
 
     bottomPillar->setPos(QPointF(0, 0) + QPointF(-bottomPillar->boundingRect().width() /2, // x-axis
                                              60)); //y-axis

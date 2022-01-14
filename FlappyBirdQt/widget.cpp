@@ -1,7 +1,6 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include <QGraphicsPixmapItem>
-#include "pillar.h"
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -21,10 +20,14 @@ Widget::Widget(QWidget *parent)
     scene->addLine(-400, 0, 400, 0, QPen(Qt::red));
     scene->addLine(0, -400, 0, 400, QPen(Qt::red));
 
+
+
     //Pillar *pillar = new Pillar();
     //scene->addItem(pillar);
 
     ui->graphicsView->setScene(scene);
+
+    scene->addBird();
 }
 
 Widget::~Widget()
