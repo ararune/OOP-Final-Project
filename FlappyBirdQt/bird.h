@@ -23,6 +23,8 @@ public:
     void rotateTo(const qreal &end, const int& duration, const QEasingCurve& curve);
     void shootUp();
     void fallAfterJump();
+    void startFlying();
+    void freezeBird();  // freeze bird in place
 
 
 signals:

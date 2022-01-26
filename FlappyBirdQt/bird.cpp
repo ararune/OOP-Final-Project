@@ -21,10 +21,10 @@ Bird::Bird(QPixmap pixmap) :
     yAnimation->setEndValue(groundPosition);
     yAnimation->setEasingCurve(QEasingCurve::InQuad);
     yAnimation->setDuration(1000);      // 1 second
-    yAnimation->start();
+   // yAnimation->start();
 
     rotationAnimation = new QPropertyAnimation(this, "rotation", this);
-    rotateTo(90, 1200, QEasingCurve::InQuad);       // 90 -> angle, 1.2 seconds duration, easing curve
+   // rotateTo(90, 1200, QEasingCurve::InQuad);       // 90 -> angle, 1.2 seconds duration, easing curve
 
 
 }
@@ -125,7 +125,17 @@ void Bird::fallAfterJump()
         rotateTo(90, 1100, QEasingCurve::InCubic);
 
     }
+}
 
+void Bird::startFlying()
+{
+    yAnimation->start();
+    rotateTo(90, 1200, QEasingCurve::InQuad);       // 90 -> angle, 1.2
+}
 
+void Bird::freezeBird()
+{
+    yAnimation->stop();
+    rotationAnimation->stop();
 
 }

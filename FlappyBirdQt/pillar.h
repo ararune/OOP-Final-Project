@@ -17,16 +17,19 @@ public:
 
     qreal x() const;
     void setX(qreal newX);
+    void freezePillars();
 
 signals:
-
+    void collideFail(); // game stop upon collision
 private:
+    bool isColliding();
     QGraphicsPixmapItem * topPillar;
     QGraphicsPixmapItem * bottomPillar;
     QPropertyAnimation  * xAnimation;
 
     int yPos;
     qreal m_x;
+    bool isPastBird;
 };
 
 #endif // PILLAR_H

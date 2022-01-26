@@ -1,6 +1,8 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include <QGraphicsPixmapItem>
+#include "scene.h"
+
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -34,4 +36,5 @@ Widget::~Widget()
 {
     delete ui;
 }
+
 

@@ -6,5 +6,6 @@
         <file>images/yellowbird-downflap.png</file>
         <file>images/yellowbird-midflap.png</file>
         <file>images/yellowbird-upflap.png</file>
+        <file>images/gameover.png</file>
     </qresource>
 </RCC>

@@ -2,10 +2,13 @@
 #include <QRandomGenerator>
 #include <QDebug>
 #include <QGraphicsScene>
+#include "bird.h"
+#include "scene.h"
 
 Pillar::Pillar() :
     topPillar(new QGraphicsPixmapItem(QPixmap(":/images/pipa2Up.png"))),
-    bottomPillar(new QGraphicsPixmapItem(QPixmap(":/images/pipa2Down.png")))
+    bottomPillar(new QGraphicsPixmapItem(QPixmap(":/images/pipa2Down.png"))),
+    isPastBird(false)
 {
     // manipulating the pillar height and width display, 60 is a magix number (space between the pillars)
     topPillar->setPos(QPointF(0, 0) - QPointF(topPillar->boundingRect().width() /2, // x-axis
@@ -42,7 +45,9 @@ Pillar::Pillar() :
 
 Pillar::~Pillar()
 {
-    qDebug() << "Deleting pillar";
+    //qDebug() << "Deleting pillar";
+    delete topPillar;
+    delete bottomPillar;
 }
 
 qreal Pillar::x() const
@@ -53,5 +58,35 @@ qreal Pillar::x() const
 void Pillar::setX(qreal newX)
 {
     m_x = newX;
+    // pillar not at 0 position yet and not past bird yet
+    if(newX < 0 && !isPastBird){
+        isPastBird = true;
+        QGraphicsScene * mScene = scene();
+        Scene * myScene = dynamic_cast<Scene * >(mScene);
+        if(myScene){
+           myScene->incrementScore();
+        }
+    }
+    if(isColliding()){
+        emit collideFail();
+    }
     setPos(QPointF(0, 0) + QPointF(newX, yPos));
+}
+
+void Pillar::freezePillars()
+{
+    xAnimation->stop();
+}
+
+bool Pillar::isColliding()
+{
+    QList<QGraphicsItem*>collidingItems = topPillar->collidingItems();  // returns a list of all items that collide with this item
+    collidingItems.append(bottomPillar->collidingItems());
+    foreach(QGraphicsItem * item, collidingItems){
+        Bird * birdItem = dynamic_cast<Bird*>(item);
+        if(birdItem){
+            return true;    // because we collided
+        }
+    }
+    return false;           // no collision
 }
